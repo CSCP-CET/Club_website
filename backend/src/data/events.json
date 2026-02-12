@@ -1,0 +1,28 @@
+[
+  {
+    "id": "ctf-kickoff",
+    "title": "CTF Kickoff",
+    "description": "Intro session + practice challenges to onboard new members into CTF workflows.",
+    "dateISO": "2026-03-01",
+    "kind": "upcoming",
+    "links": [
+      {
+        "label": "Registration",
+        "url": "https://example.com/"
+      }
+    ]
+  },
+  {
+    "id": "cp-bootcamp-1",
+    "title": "CP Bootcamp #1",
+    "description": "Problem-solving patterns, complexity basics, and contest strategy.",
+    "dateISO": "2026-01-20",
+    "kind": "past",
+    "links": [
+      {
+        "label": "Resources",
+        "url": "https://example.com/"
+      }
+    ]
+  }
+]
