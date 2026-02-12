@@ -120,16 +120,6 @@ CORS_ORIGIN=http://localhost:5173
 VITE_API_URL=http://localhost:3000
 ```
 
-## Security Features
-
-- No database or authentication (reduces attack surface)
-- File-based read-only data
-- CORS restricted to frontend origin
-- Rate limiting
-- Helmet security headers
-- Input validation with Zod
-- No eval() or dynamic code execution
-- All external links use `rel="noopener noreferrer"`
 
 ## How to View the Website
 
