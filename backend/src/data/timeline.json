@@ -1,0 +1,14 @@
+[
+  {
+    "id": "founded",
+    "title": "Club Initiated",
+    "description": "Core team formed and initial roadmap created.",
+    "dateISO": "2025-09-01"
+  },
+  {
+    "id": "first-ctf",
+    "title": "First CTF Practice",
+    "description": "Hands-on intro to web + crypto + reversing basics.",
+    "dateISO": "2025-10-15"
+  }
+]
