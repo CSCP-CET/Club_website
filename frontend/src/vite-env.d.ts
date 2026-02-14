@@ -12,3 +12,9 @@ declare module '*.module.css' {
   const classes: Record<string, string>;
   export default classes;
 }
+
+declare module '*.JPG' {
+  const src: string;
+  export default src;
+}
+
