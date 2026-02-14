@@ -1,73 +1,115 @@
 .card {
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: rgba(15, 23, 42, 0.38);
-  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 320px; /* Adjust based on carousel needs */
 }
 
-.media {
+.contentWrapper {
   position: relative;
-  aspect-ratio: 4 / 3;
-  background: rgba(2, 6, 23, 0.55);
+  width: 100%;
+  border-radius: 24px;
+  background: white; /* Fallback */
+  overflow: hidden;
+  /* Simulating the card look */
+}
+
+.imageWrapper {
+  position: relative;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--panel); 
+  aspect-ratio: 3/4; /* Vertical portrait for member photos */
+}
+
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  filter: saturate(1.1) contrast(1.05);
+  object-position: top center; /* Focus on faces */
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
 }
 
-.overlay {
+.card:hover .image {
+  filter: grayscale(0);
+}
+
+.blueBlur {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.55) 85%);
+  z-index: 1;
+  opacity: 1;
+  transform-origin: center;
 }
 
-.icons {
+.blurImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2); /* Make it bleed out a bit if needed, or just fill */
+}
+
+.socials {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  bottom: 16px;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover .socials {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .iconLink {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: rgba(2, 6, 23, 0.65);
-  color: rgba(226, 232, 240, 0.9);
-  text-decoration: none;
+  transition: all 0.2s;
 }
 
 .iconLink:hover {
-  border-color: rgba(56, 189, 248, 0.55);
-  background: rgba(15, 23, 42, 0.7);
+  background: #fff;
+  transform: scale(1.1);
 }
 
-.iconLink:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.16);
-  border-color: rgba(56, 189, 248, 0.7);
-}
-
-.body {
-  padding: 14px 14px 16px;
+.info {
+  text-align: center;
 }
 
 .name {
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .role {
-  margin-top: 6px;
   color: var(--muted);
+  /* text-transform: uppercase; */
   font-size: 14px;
+  letter-spacing: 0.5px;
+  margin: 6px 0 0;
 }
