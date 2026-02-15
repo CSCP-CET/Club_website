@@ -1,22 +1,23 @@
 [
-  {
-    "id": "president",
-    "name": "n1",
-    "role": "r1",
-    "imageUrl": "/assets/execom/image.png", 
-    "socials": {
-      "instagram": "https://instagram.com/",
-      "linkedin": "https://linkedin.com/",
-      "github": "https://github.com/"
-    }
-  },
-  {
-    "id": "cp-lead",
-    "name": "n2",
-    "role": "r2",
-    "imageUrl": "/assets/execom/image.png",
-    "socials": {
-      "github": "https://github.com/"
-    }
-  }
+  { "id": "1", "name": "Gautham Krishna B", "role": "Chairperson", "imageUrl": "/assets/execom/Gautham Krishna B_President.jpg", "socials": { "instagram": "https://instagram.com", "linkedin": "https://linkedin.com", "github": "https://github.com" } },
+  { "id": "2", "name": "Alen Joe Benny", "role": "Vice Chairperson", "imageUrl": "/assets/execom/Alen_Joe_Benny.jpg", "socials": {} },
+  { "id": "3", "name": "Aflah Muhammed", "role": "Secretary", "imageUrl": "/assets/execom/AFLAH MUHAMMED .jpg", "socials": {} },
+  { "id": "4", "name": "Ken Mani", "role": "Joint Secretary", "imageUrl": "/assets/execom/Ken Mani Joint Secretary.jpg", "socials": {} },
+  { "id": "5", "name": "Kiran", "role": "Cyber Security Lead", "imageUrl": "/assets/execom/KIRAN_ CYBER SECURITY LEAD.jpg", "socials": {} },
+  { "id": "6", "name": "Jordy George Justin", "role": "Competitive Programming Lead", "imageUrl": "/assets/execom/Jordy George Justin CP Lead.jpg", "socials": {} },
+  { "id": "7", "name": "Jestine Thomas Mathew", "role": "Cyber Security Sub Lead", "imageUrl": "/assets/execom/Jestine Thomas Mathew_CS SUB LEAD.jpg", "socials": {} },
+  { "id": "8", "name": "Alwin Pramod", "role": "Cyber Security Sub Lead", "imageUrl": "/assets/execom/Alwin Pramod_CS Sub Lead.jpg", "socials": {} },
+  { "id": "9", "name": "Gautham Thrilok", "role": "Competitive Programming Sub Lead", "imageUrl": "/assets/execom/Gautham Thrilok CP Sub Lead.jpg", "socials": {} },
+  { "id": "10", "name": "Naveed Niaz", "role": "Competitive Programming Sub Lead", "imageUrl": "/assets/execom/Naveed Niaz CP Sub Lead.jpg", "socials": {} },
+  { "id": "11", "name": "Devika Sajeesh", "role": "Web Lead", "imageUrl": "/assets/execom/DevikaSajeesh_Web.jpg", "socials": {} },
+  { "id": "12", "name": "Harikrishnan", "role": "Web Lead", "imageUrl": "/assets/execom/Harikrishnan_Web.jpg", "socials": {} },
+  { "id": "13", "name": "Gowri Lal", "role": "WIT Lead", "imageUrl": "/assets/execom/Gowri Lal_WIT.jpeg", "socials": {} },
+  { "id": "14", "name": "Aithel Christo", "role": "CPSub Lead", "imageUrl": "/assets/execom/Aithel_Christo_CP_Sub_Lead.JPG", "socials": {} },
+  { "id": "15", "name": "Ivin Mathew Kurian", "role": "Mentor", "imageUrl": "/assets/execom/Ivin Mathew Kurian_Mentor.JPG", "socials": {} },
+  { "id": "16", "name": "Abhinand T V", "role": "Marketing", "imageUrl": "/assets/execom/Abhinand T V marketing_.jpg", "socials": {} },
+  { "id": "17", "name": "Fuad Fysal", "role": "Media Team", "imageUrl": "/assets/execom/Fuad Fysal_Media.jpg", "socials": {} },
+  { "id": "18", "name": "Ann Susan Jose", "role": "Design Sub Lead", "imageUrl": "/assets/execom/AnnSusanJose_design sub lead.jpg", "socials": {} },
+  { "id": "19", "name": "Navaneeta", "role": "Design Sub Lead", "imageUrl": "/assets/execom/Navaneeta Design Sub-lead.jpg", "socials": {} },
+  { "id": "20", "name": "George S", "role": "Content Team Lead", "imageUrl": "/assets/execom/George S_Media.jpg", "socials": {} },
+  { "id": "21", "name": "Sooraj V", "role": "Content Team Lead", "imageUrl": "/assets/execom/Sooraj V_Content.jpeg", "socials": {} }
 ]

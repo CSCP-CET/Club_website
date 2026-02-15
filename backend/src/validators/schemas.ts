@@ -13,7 +13,7 @@ export const memberSchema = z
     id: z.string().min(1),
     name: z.string().min(1),
     role: z.string().min(1),
-    imageUrl: z.union([z.string().url(), z.string().regex(/^\/assets\//)]),
+    imageUrl: z.string().min(1), // Relaxed validation to allow identifiers like "img1"
     socials: socialLinksSchema,
   })
   .strict();
