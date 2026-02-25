@@ -1,28 +1,28 @@
 [
   {
-    "id": "ctf-kickoff",
-    "title": "CTF Kickoff",
-    "description": "Intro session + practice challenges to onboard new members into CTF workflows.",
-    "dateISO": "2026-03-01",
-    "kind": "upcoming",
-    "links": [
-      {
-        "label": "Registration",
-        "url": "https://example.com/"
-      }
-    ]
-  },
+  "id": "inflexion-cp-contest",
+  "title": "INFLEXION",
+  "description": "Multi-week competitive programming contest with Novice and Veteran tracks. Compete weekly, climb the leaderboard and win cash prizes.",
+  "dateISO": "2026-02-26",
+  "kind": "upcoming",
+  "links": [
+    {
+      "label": "Leaderboard",
+      "url": "/leaderboards"
+    }
+  ]
+},
   {
-    "id": "cp-bootcamp-1",
-    "title": "CP Bootcamp #1",
-    "description": "Problem-solving patterns, complexity basics, and contest strategy.",
-    "dateISO": "2026-01-20",
-    "kind": "past",
-    "links": [
-      {
-        "label": "Resources",
-        "url": "https://example.com/"
-      }
-    ]
-  }
+  "id": "cp-ace-session",
+  "title": "Ace Competitive Programming Session",
+  "description": "Exclusive competitive programming session by Aravind Suresh Thakidayil (Software Developer at Oracle). Sharpen your coding skills and logical thinking. Registration fee ₹19.",
+  "dateISO": "2026-02-09",
+  "kind": "past",
+  "links": [
+    {
+      "label": "Register",
+      "url": "https://forms.gle/3FCRDntbDy3S9UTL6"
+    }
+  ]
+}
 ]
