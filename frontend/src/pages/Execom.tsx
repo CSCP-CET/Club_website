@@ -42,52 +42,203 @@ export default function Execom() {
           return <div className="muted">No members found.</div>;
         }
 
-        const leadershipPriority: Array<{ match: RegExp; priority: number }> = [
-          { match: /chairperson/i, priority: 1 },
-          { match: /vice\s*chairperson/i, priority: 2 },
-          { match: /^secretary$/i, priority: 3 },
-          { match: /joint\s*secretary/i, priority: 4 },
+        // Leadership: Chair, VC, Sec, Joint Sec, Mentor
+        const leadership = members.filter((m) =>
+          /chairperson|vice\s*chairperson|secretary|joint\s*secretary|mentor/i.test(m.role)
+        );
+
+        const leadershipOrder = [
+          'Chairperson',
+          'Vice Chairperson',
+          'Secretary',
+          'Joint Secretary',
+          'Mentor',
         ];
 
-        const getLeadershipRank = (role: string) => {
-          const found = leadershipPriority.find((r) => r.match.test(role));
-          return found ? found.priority : null;
+        const sortedLeadership = leadership.sort((a, b) => {
+          const aIdx = leadershipOrder.findIndex((t) => a.role.toLowerCase().includes(t.toLowerCase()));
+          const bIdx = leadershipOrder.findIndex((t) => b.role.toLowerCase().includes(t.toLowerCase()));
+          return aIdx - bIdx;
+        });
+
+        // Group helpers
+        const groupByLead = (leadRole: string, subRole: string) => {
+          const lead = members.find((m) => m.role.toLowerCase() === leadRole.toLowerCase());
+          const subs = members.filter((m) => m.role.toLowerCase().includes(subRole.toLowerCase()));
+          return { lead, subs };
         };
 
-        const featured = members
-          .map((m) => ({ m, rank: getLeadershipRank(m.role) }))
-          .filter((x) => x.rank !== null)
-          .sort((a, b) => (a.rank ?? 0) - (b.rank ?? 0))
-          .map((x) => x.m);
+        const cybersec = groupByLead('Cyber Security Lead', 'Cyber Security Sub Lead');
+        const competitive = groupByLead('Competitive Programming Lead', 'Competitive Programming Sub Lead');
+        const webLeads = members.filter((m) => m.role.toLowerCase().includes('web lead'));
+        const witLead = members.find((m) => m.role.toLowerCase().includes('wit lead'));
+        const marketing = members.find((m) => m.role.toLowerCase().includes('marketing'));
+        const media = members.find((m) => m.role.toLowerCase().includes('media team'));
+        const designLeads = members.filter((m) => m.role.toLowerCase().includes('design sub lead'));
+        const contentLeads = members.filter((m) => m.role.toLowerCase().includes('content team lead'));
 
-        const featuredIds = new Set(featured.map((m) => m.id));
-        const rest = members.filter((m) => !featuredIds.has(m.id));
+        const assignedIds = new Set([
+          ...sortedLeadership.map((m) => m.id),
+          cybersec.lead?.id,
+          ...cybersec.subs.map((m) => m.id),
+          competitive.lead?.id,
+          ...competitive.subs.map((m) => m.id),
+          ...webLeads.map((m) => m.id),
+          witLead?.id,
+          marketing?.id,
+          media?.id,
+          ...designLeads.map((m) => m.id),
+          ...contentLeads.map((m) => m.id),
+        ].filter(Boolean));
+
+        const others = members.filter((m) => !assignedIds.has(m.id));
 
         return (
           <div>
-            {featured.length > 0 ? (
-              <section style={{ marginBottom: 18 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
-                  Leadership
-                </h2>
-                <div className="gridMembers gridMembersFeatured">
-                  {featured.map((m) => (
-                    <MemberCard key={m.id} member={m} />
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            <section>
+            {/* Leadership Row */}
+            <section style={{ marginBottom: 32 }}>
               <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
-                Team
+                Leadership
               </h2>
-              <div className="gridMembers">
-                {rest.map((m) => (
+              <div className="gridLeadership">
+                {sortedLeadership.map((m) => (
                   <MemberCard key={m.id} member={m} />
                 ))}
               </div>
             </section>
+
+            {/* Cybersecurity */}
+            {cybersec.lead && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Cybersecurity
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    <MemberCard member={cybersec.lead} />
+                  </div>
+                  {cybersec.subs.length > 0 && (
+                    <div className="treeSubs">
+                      {cybersec.subs.map((m) => (
+                        <MemberCard key={m.id} member={m} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
+
+            {/* Competitive Programming */}
+            {competitive.lead && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Competitive Programming
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    <MemberCard member={competitive.lead} />
+                  </div>
+                  {competitive.subs.length > 0 && (
+                    <div className="treeSubs">
+                      {competitive.subs.map((m) => (
+                        <MemberCard key={m.id} member={m} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </section>
+            )}
+
+            {/* Web */}
+            {webLeads.length > 0 && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Web
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    {webLeads.map((m) => (
+                      <MemberCard key={m.id} member={m} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* WIT */}
+            {witLead && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  WIT
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    <MemberCard member={witLead} />
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Marketing & Media */}
+            {(marketing || media) && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Marketing & Media
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    {marketing && <MemberCard member={marketing} />}
+                    {media && <MemberCard member={media} />}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Design */}
+            {designLeads.length > 0 && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Design
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    {designLeads.map((m) => (
+                      <MemberCard key={m.id} member={m} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Content */}
+            {contentLeads.length > 0 && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Content
+                </h2>
+                <div className="gridTree">
+                  <div className="treeSubs">
+                    {contentLeads.map((m) => (
+                      <MemberCard key={m.id} member={m} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Others */}
+            {others.length > 0 && (
+              <section style={{ marginBottom: 32 }}>
+                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+                  Others
+                </h2>
+                <div className="gridMembers">
+                  {others.map((m) => (
+                    <MemberCard key={m.id} member={m} />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         );
       }
