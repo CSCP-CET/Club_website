@@ -60,8 +60,15 @@ app.use('/api', apiRouter);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(port, () => {
-  // Intentionally no extra logging beyond address/port
-  // eslint-disable-next-line no-console
-  console.log(`Backend listening on http://localhost:${port}`);
-});
+// export the app instance so Vercel (or other serverless hosts)
+// can wrap it in a lambda handler. When running locally we start
+// the listener explicitly.
+export default app;
+
+if (process.env.VERCEL === undefined) {
+  app.listen(port, () => {
+    // Intentionally no extra logging beyond address/port
+    // eslint-disable-next-line no-console
+    console.log(`Backend listening on http://localhost:${port}`);
+  });
+}
