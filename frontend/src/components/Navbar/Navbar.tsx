@@ -18,14 +18,13 @@ export default function Navbar() {
           </div>
           <span className={styles.name}>CSCP-CET</span>
         </div>
+
         <nav aria-label="Primary" className={styles.nav}>
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.active}` : styles.link
-              }
+              className={({ isActive }) => (isActive ? `${styles.link} ${styles.active}` : styles.link)}
               end={item.to === '/'}
             >
               {item.label}

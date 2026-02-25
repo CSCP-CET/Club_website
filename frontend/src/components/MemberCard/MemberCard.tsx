@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Github, Instagram, Linkedin } from 'lucide-react';
+import { LuGithub, LuInstagram, LuLinkedin } from 'react-icons/lu';
 import type { Member } from '../../types/member';
 import styles from './MemberCard.module.css';
 
@@ -42,17 +42,17 @@ export default function MemberCard({ member }: Props) {
         <div className={styles.icons}>
           {member.socials?.instagram ? (
             <ExternalIconLink href={member.socials.instagram} label={`${member.name} on Instagram`}>
-              <Instagram size={18} />
+              <LuInstagram size={18} />
             </ExternalIconLink>
           ) : null}
           {member.socials?.linkedin ? (
             <ExternalIconLink href={member.socials.linkedin} label={`${member.name} on LinkedIn`}>
-              <Linkedin size={18} />
+              <LuLinkedin size={18} />
             </ExternalIconLink>
           ) : null}
           {member.socials?.github ? (
             <ExternalIconLink href={member.socials.github} label={`${member.name} on GitHub`}>
-              <Github size={18} />
+              <LuGithub size={18} />
             </ExternalIconLink>
           ) : null}
         </div>
@@ -64,4 +64,4 @@ export default function MemberCard({ member }: Props) {
       </div>
     </article>
   );
-} // Updated to force refresh
+}
