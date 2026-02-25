@@ -5,9 +5,7 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": { 
-        "distDir": "dist",
-        "installCommand": "pnpm install --frozen-lockfile",
-        "buildCommand": "pnpm run build"
+        "distDir": "dist"
       }
     },
     {
