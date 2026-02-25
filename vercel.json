@@ -4,7 +4,7 @@
   "outputDirectory": "frontend/dist",
   "functions": {
     "backend/src/server.ts": {
-      "runtime": "nodejs"
+      "runtime": "nodejs18.x"
     }
   },
   "routes": [
