@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_URL?: string;
+  readonly VITE_NOVICE_SHEET_URL?: string;
+  readonly VITE_VETERAN_SHEET_URL?: string;
 }
 
 interface ImportMeta {

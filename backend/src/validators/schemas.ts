@@ -21,7 +21,7 @@ export const memberSchema = z
 export const eventLinkSchema = z
   .object({
     label: z.string().min(1),
-    url: z.string().url(),
+    url: z.union([z.string().url(), z.string().startsWith('/')]),
   })
   .strict();
 

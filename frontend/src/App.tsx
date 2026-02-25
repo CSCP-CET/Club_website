@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Execom from './pages/Execom';
 import Contact from './pages/Contact';
+import Leaderboards from './pages/Leaderboards';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/execom" element={<Execom />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/leaderboards" element={<Leaderboards />} />
         </Routes>
       </main>
     </div>
