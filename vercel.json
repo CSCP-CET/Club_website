@@ -2,11 +2,12 @@
   "version": 2,
   "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "backend/src/server.ts": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "backend/src/server.ts",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
