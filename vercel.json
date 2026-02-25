@@ -11,11 +11,17 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/src/server.ts"
+      "dest": "/backend/src/server.ts",
+      "headers": {
+        "x-original-path": "/api/$1"
+      }
     },
     {
       "src": "/assets/(.*)",
-      "dest": "/backend/assets/$1"
+      "dest": "/backend/assets/$1",
+      "headers": {
+        "x-original-path": "/assets/$1"
+      }
     },
     {
       "src": "/(.*)",

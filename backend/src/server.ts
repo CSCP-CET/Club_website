@@ -17,7 +17,14 @@ const rateLimitMax = Number(process.env.RATE_LIMIT_MAX ?? 120);
 const app = express();
 
 app.use((req, res, next) => {
-  req.url = req.url.replace(/^\/backend\/src/, '');
+  if (req.headers['x-original-path']) {
+    const original = req.headers['x-original-path'] as string;
+    if (original.startsWith('/api')) {
+      req.url = original.replace('/api', '');
+    } else {
+      req.url = original;
+    }
+  }
   next();
 });
 
