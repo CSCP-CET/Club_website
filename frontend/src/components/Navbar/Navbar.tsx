@@ -16,7 +16,7 @@ export default function Navbar() {
           <div className={styles.mark} aria-hidden="true">
             CS
           </div>
-          <span className={styles.name}>CSCP-CET</span>
+          <span className={styles.name}>CYBER SECURITY AND COMPETITIVE PROGRAMMING CLUB</span>
         </div>
 
         <nav aria-label="Primary" className={styles.nav}>

@@ -20,7 +20,7 @@ export default function Home() {
             CS
           </div>
           <div>
-            <h1 style={{ margin: 0, fontSize: 38, lineHeight: 1.1 }}>CSCP-CET</h1>
+            <h1 style={{ margin: 0, fontSize: 38, lineHeight: 1.1 }}>Cyber Security and Competitive Programming Club</h1>
             <p className="muted" style={{ margin: '8px 0 0', fontSize: 16 }}>
               Cybersecurity & Competitive Programming Club
             </p>
