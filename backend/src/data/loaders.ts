@@ -1,28 +1,16 @@
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { eventsSchema, membersSchema, timelineSchema } from '../validators/schemas.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-async function readJsonFile(fileName: string): Promise<unknown> {
-  const p = path.join(__dirname, fileName);
-  const raw = await readFile(p, 'utf-8');
-  return JSON.parse(raw) as unknown;
-}
+import membersJson from './members.json';
+import eventsJson from './events.json';
+import timelineJson from './timeline.json';
 
 export async function loadMembers() {
-  const data = await readJsonFile('members.json');
-  return membersSchema.parse(data);
+  return membersSchema.parse(membersJson);
 }
 
 export async function loadEvents() {
-  const data = await readJsonFile('events.json');
-  return eventsSchema.parse(data);
+  return eventsSchema.parse(eventsJson);
 }
 
 export async function loadTimeline() {
-  const data = await readJsonFile('timeline.json');
-  return timelineSchema.parse(data);
+  return timelineSchema.parse(timelineJson);
 }
