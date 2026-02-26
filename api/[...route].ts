@@ -26,8 +26,16 @@ export default async function handler(req: any, res: any) {
       return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
+    const routeParam = req?.query?.route;
+    const routePath = Array.isArray(routeParam)
+      ? routeParam.join('/')
+      : typeof routeParam === 'string'
+        ? routeParam
+        : '';
+
     const pathname = String(req.url || '/').split('?')[0] || '/';
-    const apiPath = pathname.replace(/^\/api\/?/, '');
+    const fallbackPath = pathname.replace(/^\/api\/?/, '');
+    const apiPath = (routePath || fallbackPath).replace(/^\/+/, '');
 
     if (apiPath in jsonFiles) {
       const filePath = path.join(DATA_ROOT, jsonFiles[apiPath]);
