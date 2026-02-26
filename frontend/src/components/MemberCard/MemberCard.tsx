@@ -52,13 +52,25 @@ function ExternalIconLink({ href, label, children }: { href: string; label: stri
   );
 }
 
+/** Map of member names (lowercase) whose photos need a CSS rotation fix. */
+const IMAGE_ROTATION_FIXES: Record<string, string> = {
+  'ivin mathew kurian': 'rotate(-90deg)',
+};
+
 export default function MemberCard({ member }: Props) {
   const imageSrc = resolveMemberImageUrl(member.imageUrl);
+  const rotationFix = IMAGE_ROTATION_FIXES[member.name.toLowerCase()];
 
   return (
     <article className={styles.card}>
       <div className={styles.media}>
-        <img className={styles.image} src={imageSrc} alt={member.name} loading="lazy" />
+        <img
+          className={styles.image}
+          src={imageSrc}
+          alt={member.name}
+          loading="lazy"
+          style={rotationFix ? { transform: rotationFix } : undefined}
+        />
         <div className={styles.overlay} aria-hidden="true" />
         <div className={styles.icons}>
           {member.socials?.instagram ? (

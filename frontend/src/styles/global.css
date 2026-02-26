@@ -20,6 +20,12 @@
 
 * { box-sizing: border-box; }
 
+img {
+  max-width: 100%;
+  height: auto;
+  image-orientation: from-image;
+}
+
 html, body {
   height: 100%;
 }
@@ -129,21 +135,16 @@ a:hover { text-decoration: underline; }
 
 .muted { color: var(--muted); }
 
-.gridMembers {
+.gridMembers,
+.gridLeadership,
+.treeSubs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 12px;
-  max-width: 900px;
+  grid-template-columns: repeat(auto-fill, 220px);
+  gap: 16px;
+  max-width: 960px;
   margin: 0 auto;
-}
-
-.gridLeadership {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+  justify-content: center;
 }
 
 .gridTree {
@@ -151,20 +152,13 @@ a:hover { text-decoration: underline; }
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  width: 100%;
 }
 
 .treeLead {
   margin-bottom: 8px;
   display: flex;
   justify-content: center;
-}
-
-.treeSubs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
-  width: 100%;
-  max-width: 540px;
 }
 
 .toggleBtn {
@@ -251,11 +245,7 @@ a:hover { text-decoration: underline; }
   }
 }
 
-@media (min-width: 980px) {
-  .gridMembers {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
+
 
 .gridEvents {
   display: grid;
