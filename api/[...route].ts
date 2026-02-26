@@ -1,10 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const PROJECT_ROOT = path.join(__dirname, '..');
+const PROJECT_ROOT = process.cwd();
 const DATA_ROOT = path.join(PROJECT_ROOT, 'backend', 'src', 'data');
 const ASSETS_ROOT = path.join(PROJECT_ROOT, 'backend', 'assets');
 
