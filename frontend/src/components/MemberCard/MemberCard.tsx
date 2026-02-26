@@ -9,8 +9,10 @@ type Props = {
 
 function resolveMemberImageUrl(imageUrl: string) {
   if (imageUrl.startsWith('/assets/')) {
-    const base = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:3000';
-    const url = new URL(imageUrl, base);
+    const base =
+      (import.meta.env.VITE_API_URL as string | undefined) ??
+      (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+    const url = new URL(`/api${imageUrl}`, base);
     return url.toString();
   }
 

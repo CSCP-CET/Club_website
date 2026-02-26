@@ -10,11 +10,7 @@
   },
   "rewrites": [
     {
-      "source": "/assets/(.*)",
-      "destination": "/api/assets/$1"
-    },
-    {
-      "source": "/((?!api/|assets/).*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ]
