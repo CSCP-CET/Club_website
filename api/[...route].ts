@@ -45,7 +45,9 @@ export default async function handler(req: any, res: any) {
       const file = await readFile(target);
       res.setHeader('Content-Type', getMimeType(target));
       res.setHeader('Cache-Control', 'public, max-age=3600');
-      return res.status(200).send(file);
+      res.statusCode = 200;
+      res.end(file);
+      return;
     }
 
     if (apiPath === 'health' || apiPath === '') {
