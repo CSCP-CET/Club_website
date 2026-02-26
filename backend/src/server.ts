@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { type NextFunction, type Request, type Response } from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import helmet from 'helmet';
@@ -16,7 +16,7 @@ const rateLimitMax = Number(process.env.RATE_LIMIT_MAX ?? 120);
 
 const app = express();
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   if (req.headers['x-original-path']) {
     const original = req.headers['x-original-path'] as string;
     if (original.startsWith('/api')) {
@@ -55,7 +55,7 @@ app.use(
   }),
 );
 
-app.get('/health', (_req, res) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({ ok: true });
 });
 

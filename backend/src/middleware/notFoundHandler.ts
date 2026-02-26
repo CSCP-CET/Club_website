@@ -1,5 +1,5 @@
-import type { Request, Response, NextFunction } from 'express';
+import type { RequestHandler } from 'express';
 
-export function notFoundHandler(_req: Request, res: Response, _next: NextFunction) {
+export const notFoundHandler: RequestHandler = (_req, res) => {
   res.status(404).json({ error: 'Not Found' });
-}
+};
