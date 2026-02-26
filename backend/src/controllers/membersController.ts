@@ -1,11 +1,10 @@
-import type { RequestHandler } from 'express';
 import { loadMembers } from '../data/loaders';
 
-export const getMembers: RequestHandler = async (_req, res, next) => {
+export async function getMembers(_req: any, res: any, next: any) {
   try {
     const members = await loadMembers();
     res.status(200).json(members);
   } catch (err) {
     next(err);
   }
-};
+}
