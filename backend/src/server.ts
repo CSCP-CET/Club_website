@@ -4,9 +4,9 @@ import { fileURLToPath } from 'node:url';
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import apiRouter from './routes/api';
-import { notFoundHandler } from './middleware/notFoundHandler';
-import { errorHandler } from './middleware/errorHandler';
+import apiRouter from './routes/api.js';
+import { notFoundHandler } from './middleware/notFoundHandler.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 const port = Number(process.env.PORT ?? 3000);
 const corsOrigin = process.env.CORS_ORIGIN ?? 'http://localhost:5173';

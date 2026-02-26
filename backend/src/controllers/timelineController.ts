@@ -1,4 +1,4 @@
-import { loadTimeline } from '../data/loaders';
+import { loadTimeline } from '../data/loaders.js';
 
 export async function getTimeline(_req: any, res: any, next: any) {
   try {

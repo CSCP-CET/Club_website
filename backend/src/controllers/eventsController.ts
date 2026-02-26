@@ -1,4 +1,4 @@
-import { loadEvents } from '../data/loaders';
+import { loadEvents } from '../data/loaders.js';
 
 export async function getEvents(_req: any, res: any, next: any) {
   try {

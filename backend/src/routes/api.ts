@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { getMembers } from '../controllers/membersController';
-import { getEvents } from '../controllers/eventsController';
-import { getTimeline } from '../controllers/timelineController';
+import { getMembers } from '../controllers/membersController.js';
+import { getEvents } from '../controllers/eventsController.js';
+import { getTimeline } from '../controllers/timelineController.js';
 
 const router = Router();
 

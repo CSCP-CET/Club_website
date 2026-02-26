@@ -1,7 +1,6 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import app from '../backend/src/server';
+import app from '../backend/src/server.js';
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default function handler(req: any, res: any) {
   // /assets/* is rewritten to /api/assets/*; strip /api so Express static
   // middleware mounted at /assets can match.
   if (typeof req.url === 'string' && req.url.startsWith('/api/assets/')) {
