@@ -7,8 +7,27 @@ type Props = {
   member: Member;
 };
 
+const execomImageModules = import.meta.glob('../../assets/Execom/*', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const execomImageMap = new Map<string, string>();
+for (const [filePath, url] of Object.entries(execomImageModules)) {
+  const fileName = filePath.split('/').pop();
+  if (!fileName) continue;
+  execomImageMap.set(fileName, url);
+  execomImageMap.set(fileName.toLowerCase(), url);
+}
+
 function resolveMemberImageUrl(imageUrl: string) {
   if (imageUrl.startsWith('/assets/')) {
+    const fileName = decodeURIComponent(imageUrl.split('/').pop() ?? '');
+    const bundled = execomImageMap.get(fileName) ?? execomImageMap.get(fileName.toLowerCase());
+    if (bundled) {
+      return bundled;
+    }
+
     const base =
       (import.meta.env.VITE_API_URL as string | undefined) ??
       (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
