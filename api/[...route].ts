@@ -1,8 +1,12 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DATA_ROOT = path.join(process.cwd(), 'backend', 'src', 'data');
-const ASSETS_ROOT = path.join(process.cwd(), 'backend', 'assets');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const PROJECT_ROOT = path.join(__dirname, '..');
+const DATA_ROOT = path.join(PROJECT_ROOT, 'backend', 'src', 'data');
+const ASSETS_ROOT = path.join(PROJECT_ROOT, 'backend', 'assets');
 
 const jsonFiles: Record<string, string> = {
   members: 'members.json',
@@ -43,14 +47,29 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json(JSON.parse(raw));
     }
 
-    if (apiPath.startsWith('assets/')) {
-      const rel = decodeURIComponent(apiPath.slice('assets/'.length));
+    const assetRelativePath = apiPath.startsWith('assets/')
+      ? apiPath.slice('assets/'.length)
+      : apiPath.startsWith('execom/')
+        ? apiPath
+        : null;
+
+    if (assetRelativePath) {
+      const rel = decodeURIComponent(assetRelativePath);
       const target = path.normalize(path.join(ASSETS_ROOT, rel));
       if (!target.startsWith(ASSETS_ROOT)) {
         return res.status(400).json({ error: 'Invalid asset path' });
       }
 
-      const file = await readFile(target);
+      let file: Buffer;
+      try {
+        file = await readFile(target);
+      } catch (err) {
+        if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+          return res.status(404).json({ error: `Asset not found: ${rel}` });
+        }
+        throw err;
+      }
+
       res.setHeader('Content-Type', getMimeType(target));
       res.setHeader('Cache-Control', 'public, max-age=3600');
       res.statusCode = 200;
@@ -62,7 +81,7 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({ ok: true });
     }
 
-    return res.status(404).json({ error: 'Not Found' });
+    return res.status(404).json({ error: `Not Found: ${apiPath}` });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown API error';
     return res.status(500).json({ error: message });
