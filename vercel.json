@@ -5,10 +5,7 @@
   "outputDirectory": "frontend/dist",
   "functions": {
     "api/[...route].ts": {
-      "includeFiles": [
-        "backend/src/data/*.json",
-        "backend/assets/**"
-      ]
+      "includeFiles": "backend/**"
     }
   },
   "rewrites": [
