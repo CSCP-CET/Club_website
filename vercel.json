@@ -3,30 +3,14 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm -r build",
   "outputDirectory": "frontend/dist",
-  "builds": [
+  "rewrites": [
     {
-      "src": "backend/src/server.ts",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/src/server.ts",
-      "headers": {
-        "x-original-path": "/api/$1"
-      }
+      "source": "/assets/(.*)",
+      "destination": "/api/assets/$1"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/backend/assets/$1",
-      "headers": {
-        "x-original-path": "/assets/$1"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
