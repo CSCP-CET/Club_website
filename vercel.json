@@ -3,18 +3,14 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm -r build",
   "outputDirectory": "frontend/dist",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/assets/(.*)",
+      "destination": "/api/assets/$1"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/api/assets/$1"
+      "source": "/((?!api/|assets/).*)",
+      "destination": "/index.html"
     },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }
