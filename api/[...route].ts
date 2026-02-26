@@ -1,8 +1,13 @@
-import { readFile } from 'node:fs/promises';
+import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 const PROJECT_ROOT = process.cwd();
 const DATA_ROOT = path.join(PROJECT_ROOT, 'backend', 'src', 'data');
-const ASSETS_ROOT = path.join(PROJECT_ROOT, 'backend', 'assets');
+const ASSET_ROOT_CANDIDATES = [
+  path.join(PROJECT_ROOT, 'backend', 'assets'),
+  path.join(PROJECT_ROOT, '..', 'backend', 'assets'),
+  path.join('/var/task', 'backend', 'assets'),
+  path.join('/var/task/user', 'backend', 'assets'),
+];
 
 const jsonFiles: Record<string, string> = {
   members: 'members.json',
@@ -18,6 +23,34 @@ function getMimeType(filePath: string): string {
   if (ext === '.gif') return 'image/gif';
   if (ext === '.svg') return 'image/svg+xml';
   return 'application/octet-stream';
+}
+
+async function pathExists(target: string): Promise<boolean> {
+  try {
+    await access(target);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function findFileCaseInsensitive(root: string, relPath: string): Promise<string | null> {
+  const segments = relPath.split('/').filter(Boolean);
+  let current = root;
+
+  for (const segment of segments) {
+    let entries: string[];
+    try {
+      entries = await readdir(current);
+    } catch {
+      return null;
+    }
+    const next = entries.find((name) => name.toLowerCase() === segment.toLowerCase());
+    if (!next) return null;
+    current = path.join(current, next);
+  }
+
+  return current;
 }
 
 export default async function handler(req: any, res: any) {
@@ -51,21 +84,30 @@ export default async function handler(req: any, res: any) {
 
     if (assetRelativePath) {
       const rel = decodeURIComponent(assetRelativePath);
-      const target = path.normalize(path.join(ASSETS_ROOT, rel));
-      if (!target.startsWith(ASSETS_ROOT)) {
-        return res.status(400).json({ error: 'Invalid asset path' });
-      }
+      const safeRel = rel.replace(/\\/g, '/').replace(/^\/+/, '');
 
-      let file: Buffer;
-      try {
-        file = await readFile(target);
-      } catch (err) {
-        if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
-          return res.status(404).json({ error: `Asset not found: ${rel}` });
+      let target: string | null = null;
+      for (const root of ASSET_ROOT_CANDIDATES) {
+        const normalized = path.normalize(path.join(root, safeRel));
+        if (!normalized.startsWith(root)) {
+          continue;
         }
-        throw err;
+        if (await pathExists(normalized)) {
+          target = normalized;
+          break;
+        }
+        const ci = await findFileCaseInsensitive(root, safeRel);
+        if (ci) {
+          target = ci;
+          break;
+        }
       }
 
+      if (!target) {
+        return res.status(404).json({ error: `Asset not found: ${safeRel}` });
+      }
+
+      const file = await readFile(target);
       res.setHeader('Content-Type', getMimeType(target));
       res.setHeader('Cache-Control', 'public, max-age=3600');
       res.statusCode = 200;
