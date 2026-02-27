@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import BlurText from '../components/BlurText';
 import MemberCard from '../components/MemberCard/MemberCard';
-import SpotlightCard from '../components/SpotlightCard';
 import type { Member } from '../types/member';
 import { fetchJson } from '../utils/api';
+import './Execom.css';
 
 type LoadState =
   | { status: 'idle' }
@@ -94,13 +94,13 @@ export default function Execom() {
         const others = members.filter((m) => !assignedIds.has(m.id));
 
         return (
-          <div>
+          <div className="team-content" style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
             {/* Leadership Row */}
-            <section style={{ marginBottom: 32 }}>
-              <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+            <section>
+              <h2 className="team-subheading" style={{ marginTop: 0 }}>
                 Leadership
               </h2>
-              <div className="gridLeadership">
+              <div className="team-grid">
                 {sortedLeadership.map((m) => (
                   <MemberCard key={m.id} member={m} />
                 ))}
@@ -109,130 +109,112 @@ export default function Execom() {
 
             {/* Cybersecurity */}
             {cybersec.lead && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Cybersecurity
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    <MemberCard member={cybersec.lead} />
-                  </div>
-                  {cybersec.subs.length > 0 && (
-                    <div className="treeSubs">
-                      {cybersec.subs.map((m) => (
-                        <MemberCard key={m.id} member={m} />
-                      ))}
-                    </div>
-                  )}
+                <div className="team-grid">
+                  <MemberCard member={cybersec.lead} />
+                  {cybersec.subs.map((m) => (
+                    <MemberCard key={m.id} member={m} />
+                  ))}
                 </div>
               </section>
             )}
 
             {/* Competitive Programming */}
             {competitive.lead && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Competitive Programming
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    <MemberCard member={competitive.lead} />
-                  </div>
-                  {competitive.subs.length > 0 && (
-                    <div className="treeSubs">
-                      {competitive.subs.map((m) => (
-                        <MemberCard key={m.id} member={m} />
-                      ))}
-                    </div>
-                  )}
+                <div className="team-grid">
+                  <MemberCard member={competitive.lead} />
+                  {competitive.subs.map((m) => (
+                    <MemberCard key={m.id} member={m} />
+                  ))}
                 </div>
               </section>
             )}
 
             {/* Web */}
             {webLeads.length > 0 && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Web
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    {webLeads.map((m) => (
-                      <MemberCard key={m.id} member={m} />
-                    ))}
-                  </div>
+                <div className="team-grid">
+                  {webLeads.map((m) => (
+                    <MemberCard key={m.id} member={m} />
+                  ))}
                 </div>
               </section>
             )}
 
             {/* WIT */}
             {witLead && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   WIT
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    <MemberCard member={witLead} />
-                  </div>
+                <div className="team-grid">
+                  <MemberCard member={witLead} />
                 </div>
               </section>
             )}
 
             {/* Marketing & Media */}
             {(marketing || media) && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Marketing & Media
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    {marketing && <MemberCard member={marketing} />}
-                    {media && <MemberCard member={media} />}
-                  </div>
+                <div className="team-grid">
+                  {marketing && (
+                    <MemberCard member={marketing} />
+                  )}
+                  {media && (
+                    <MemberCard member={media} />
+                  )}
                 </div>
               </section>
             )}
 
             {/* Design */}
             {designLeads.length > 0 && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Design
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    {designLeads.map((m) => (
-                      <MemberCard key={m.id} member={m} />
-                    ))}
-                  </div>
+                <div className="team-grid">
+                  {designLeads.map((m) => (
+                    <MemberCard key={m.id} member={m} />
+                  ))}
                 </div>
               </section>
             )}
 
             {/* Content */}
             {contentLeads.length > 0 && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Content
                 </h2>
-                <div className="gridTree">
-                  <div className="treeSubs">
-                    {contentLeads.map((m) => (
-                      <MemberCard key={m.id} member={m} />
-                    ))}
-                  </div>
+                <div className="team-grid">
+                  {contentLeads.map((m) => (
+                    <MemberCard key={m.id} member={m} />
+                  ))}
                 </div>
               </section>
             )}
 
             {/* Others */}
             {others.length > 0 && (
-              <section style={{ marginBottom: 32 }}>
-                <h2 className="sectionSubtitle" style={{ marginTop: 0 }}>
+              <section>
+                <h2 className="team-subheading">
                   Others
                 </h2>
-                <div className="gridMembers">
+                <div className="team-grid">
                   {others.map((m) => (
                     <MemberCard key={m.id} member={m} />
                   ))}
@@ -260,9 +242,9 @@ export default function Execom() {
         direction="bottom"
       />
 
-      <SpotlightCard className="spotlightPanel" spotlightColor="rgba(56, 189, 248, 0.18)">
+      <div className="team-container">
         {content}
-      </SpotlightCard>
+      </div>
     </div>
   );
 }

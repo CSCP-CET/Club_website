@@ -57,43 +57,71 @@ const IMAGE_ROTATION_FIXES: Record<string, string> = {
   'ivin mathew kurian': 'rotate(-90deg)',
 };
 
+/** Map of member names (lowercase) whose photos need a CSS object-position fix to prevent heads from being cut off. */
+const IMAGE_POSITION_FIXES: Record<string, string> = {
+  'abhinand t v': 'top center',
+  'ivin mathew kurian': 'top center',
+};
+
 export default function MemberCard({ member }: Props) {
   const imageSrc = resolveMemberImageUrl(member.imageUrl);
   const rotationFix = IMAGE_ROTATION_FIXES[member.name.toLowerCase()];
+  const positionFix = IMAGE_POSITION_FIXES[member.name.toLowerCase()];
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .substring(0, 2)
+      .toUpperCase();
+  };
 
   return (
     <article className={styles.card}>
       <div className={styles.media}>
-        <img
-          className={styles.image}
-          src={imageSrc}
-          alt={member.name}
-          loading="lazy"
-          style={rotationFix ? { transform: rotationFix } : undefined}
-        />
-        <div className={styles.overlay} aria-hidden="true" />
-        <div className={styles.icons}>
-          {member.socials?.instagram ? (
-            <ExternalIconLink href={member.socials.instagram} label={`${member.name} on Instagram`}>
-              <LuInstagram size={18} />
-            </ExternalIconLink>
-          ) : null}
-          {member.socials?.linkedin ? (
-            <ExternalIconLink href={member.socials.linkedin} label={`${member.name} on LinkedIn`}>
-              <LuLinkedin size={18} />
-            </ExternalIconLink>
-          ) : null}
-          {member.socials?.github ? (
-            <ExternalIconLink href={member.socials.github} label={`${member.name} on GitHub`}>
-              <LuGithub size={18} />
-            </ExternalIconLink>
-          ) : null}
+        <div className={styles.fallbackInitials} aria-hidden="true">
+          {getInitials(member.name)}
         </div>
+        {imageSrc ? (
+          <img
+            className={styles.image}
+            src={imageSrc}
+            alt={member.name}
+            loading="lazy"
+            style={{ 
+              transform: rotationFix ? rotationFix : undefined,
+              objectPosition: positionFix ? positionFix : undefined
+            }}
+            onError={(e) => {
+              // Hide image if it fails to load so fallback initials show
+              (e.target as HTMLImageElement).style.display = 'none';
+            }}
+          />
+        ) : null}
       </div>
 
       <div className={styles.body}>
         <div className={styles.name}>{member.name}</div>
         <div className={styles.role}>{member.role}</div>
+      </div>
+
+      <div className={styles.icons}>
+        {member.socials?.instagram ? (
+          <ExternalIconLink href={member.socials.instagram} label={`${member.name} on Instagram`}>
+            <LuInstagram size={18} />
+          </ExternalIconLink>
+        ) : null}
+        {member.socials?.linkedin ? (
+          <ExternalIconLink href={member.socials.linkedin} label={`${member.name} on LinkedIn`}>
+            <LuLinkedin size={18} />
+          </ExternalIconLink>
+        ) : null}
+        {member.socials?.github ? (
+          <ExternalIconLink href={member.socials.github} label={`${member.name} on GitHub`}>
+            <LuGithub size={18} />
+          </ExternalIconLink>
+        ) : null}
       </div>
     </article>
   );

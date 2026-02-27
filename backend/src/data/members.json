@@ -1,5 +1,5 @@
 [
-  { "id": "1", "name": "Gautham Krishna B", "role": "Chairperson", "imageUrl": "/assets/execom/Gautham Krishna B_President.jpg", "socials": { "instagram": "https://instagram.com", "linkedin": "https://linkedin.com", "github": "https://github.com" } },
+  { "id": "1", "name": "Gautham Krishna B", "role": "Chairperson", "imageUrl": "/assets/execom/Gautham Krishna B_President.jpg","socials":{}},
   { "id": "2", "name": "Alen Joe Benny", "role": "Vice Chairperson", "imageUrl": "/assets/execom/Alen_Joe_Benny.jpg", "socials": {} },
   { "id": "3", "name": "Aflah Muhammed", "role": "Secretary", "imageUrl": "/assets/execom/AFLAH MUHAMMED .jpg", "socials": {} },
   { "id": "4", "name": "Ken Mani", "role": "Joint Secretary", "imageUrl": "/assets/execom/Ken Mani Joint Secretary.jpg", "socials": {} },

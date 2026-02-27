@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/CSCP_LOGO.png';
 import styles from './Navbar.module.css';
 
 const navItems = [
@@ -16,8 +17,8 @@ export default function Navbar() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <div className={styles.brand}>
-          <div className={styles.mark} aria-hidden="true">
-            CS
+          <div className={styles.mark} aria-hidden="true" style={{ background: 'transparent', border: 'none' }}>
+            <img src={logo} alt="CSCP Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
           <span className={styles.name}>CYBER SECURITY AND COMPETITIVE PROGRAMMING CLUB</span>
         </div>

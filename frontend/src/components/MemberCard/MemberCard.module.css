@@ -1,18 +1,44 @@
 .card {
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: rgba(15, 23, 42, 0.38);
-  box-shadow: var(--shadow);
+  background: var(--panel);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  max-width: 260px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(15, 23, 42, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .media {
   position: relative;
-  aspect-ratio: 3 / 4;
-  background: rgba(2, 6, 23, 0.55);
+  width: 140px;
+  height: 180px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(2, 6, 23, 0.8), rgba(168, 85, 247, 0.2));
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+  transition: all 0.3s ease;
   overflow: hidden;
+}
+
+.card:hover .media {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+  border-color: var(--accent-2);
 }
 
 .image {
@@ -21,59 +47,70 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
-  image-orientation: from-image;
-  display: block;
+  border-radius: 8px;
+  z-index: 1;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.55) 85%);
+.fallbackInitials {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  z-index: 0;
 }
 
 .icons {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+  position: relative;
+  z-index: 2;
 }
 
 .iconLink {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: rgba(2, 6, 23, 0.65);
-  color: rgba(226, 232, 240, 0.9);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.6);
+  color: var(--muted);
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .iconLink:hover {
-  border-color: rgba(56, 189, 248, 0.55);
-  background: rgba(15, 23, 42, 0.7);
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+  background: rgba(56, 189, 248, 0.1);
+  transform: translateY(-2px);
 }
 
 .iconLink:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.16);
-  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 0 2px var(--bg-0), 0 0 0 4px var(--accent-2);
 }
 
 .body {
-  padding: 14px 14px 16px;
+  width: 100%;
 }
 
 .name {
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  font-family: "Russo One", sans-serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  letter-spacing: 0.5px;
 }
 
 .role {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 14px;
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
