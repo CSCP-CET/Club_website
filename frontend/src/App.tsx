@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import Dither from './components/Dither';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import Events from './pages/Events';
@@ -10,18 +9,7 @@ import Leaderboards from './pages/Leaderboards';
 export default function App() {
   return (
     <div className="appShell">
-      <div className="bgDither" aria-hidden="true">
-        <Dither
-          waveColor={[0.66, 0.33, 0.97]}
-          disableAnimation={false}
-          enableMouseInteraction
-          mouseRadius={0.3}
-          colorNum={4}
-          waveAmplitude={0.28}
-          waveFrequency={3}
-          waveSpeed={0.05}
-        />
-      </div>
+      
       <Navbar />
       <main className="main">
         <Routes>
