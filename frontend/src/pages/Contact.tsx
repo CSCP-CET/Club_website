@@ -36,7 +36,7 @@ export default function Contact() {
                 <div className="icon-wrapper"><LuMessageCircle size={20} /></div>
                 <span>WhatsApp: CSCP'25</span>
               </a>
-              <a href="https://discord.gg/xZQNPr8qn" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <a href="https://discord.gg/HZZUc8dbtp" target="_blank" rel="noopener noreferrer" className="contact-link">
                 <div className="icon-wrapper"><LuMessageCircle size={20} /></div>
                 <span>Discord: CSCP'25</span>
               </a>
