@@ -31,7 +31,7 @@ export const eventSchema = z
     title: z.string().min(1),
     description: z.string().min(1),
     dateISO: z.string().min(4),
-    kind: z.enum(['upcoming', 'past']),
+    kind: z.enum(['upcoming', 'ongoing', 'past']),
     links: z.array(eventLinkSchema).optional(),
   })
   .strict();

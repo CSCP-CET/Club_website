@@ -8,6 +8,6 @@ export type ClubEvent = {
   title: string;
   description: string;
   dateISO: string;
-  kind: 'upcoming' | 'past';
+  kind: 'upcoming' | 'ongoing' | 'past';
   links?: EventLink[];
 };

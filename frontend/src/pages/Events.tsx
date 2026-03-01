@@ -56,8 +56,9 @@ export default function Events() {
   const derived = useMemo(() => {
     if (state.status !== 'loaded') return null;
     const upcoming = state.events.filter((e) => e.kind === 'upcoming');
+    const ongoing = state.events.filter((e) => e.kind === 'ongoing');
     const past = state.events.filter((e) => e.kind === 'past');
-    return { upcoming, past, timeline: state.timeline };
+    return { upcoming, ongoing, past, timeline: state.timeline };
   }, [state]);
 
   return (
@@ -89,16 +90,38 @@ export default function Events() {
               return <div className="muted" style={{ textAlign: 'center', marginTop: 20 }}>{state.message}</div>;
             case 'loaded': {
               const upcoming = derived?.upcoming ?? [];
+              const ongoing = derived?.ongoing ?? [];
               const past = derived?.past ?? [];
               const timeline = derived?.timeline ?? [];
 
               return (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                   
+                  {/* ONGOING EVENTS GRID */}
+                  {ongoing.length > 0 && (
+                    <div>
+                      <h3 style={{ fontFamily: '"Russo One", sans-serif', fontSize: '1.5rem', marginBottom: '24px', color: 'var(--text)' }}>Ongoing Events</h3>
+                      <motion.div 
+                        className="events-grid"
+                        style={{ opacity: 1, transform: 'none' }} 
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        variants={containerVariants}
+                      >
+                        {ongoing.map((e) => (
+                          <motion.div key={e.id} variants={itemVariants} style={{ height: '100%' }}>
+                            <EventCard event={e} />
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    </div>
+                  )}
+
                   {/* UPCOMING EVENTS GRID */}
-                  <div>
-                    <h3 style={{ fontFamily: '"Russo One", sans-serif', fontSize: '1.5rem', marginBottom: '24px', color: 'var(--text)' }}>Upcoming Events</h3>
-                    {upcoming.length ? (
+                  {upcoming.length > 0 && (
+                    <div>
+                      <h3 style={{ fontFamily: '"Russo One", sans-serif', fontSize: '1.5rem', marginBottom: '24px', color: 'var(--text)' }}>Upcoming Events</h3>
                       <motion.div 
                         className="events-grid"
                         style={{ opacity: 1, transform: 'none' }} // Override CSS transition using Framer Motion
@@ -113,10 +136,8 @@ export default function Events() {
                           </motion.div>
                         ))}
                       </motion.div>
-                    ) : (
-                      <div className="muted">No upcoming events right now.</div>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   {/* PAST EVENTS GRID */}
                   <div>
