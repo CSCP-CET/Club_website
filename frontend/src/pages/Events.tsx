@@ -108,7 +108,7 @@ export default function Events() {
                         variants={containerVariants}
                       >
                         {upcoming.map((e) => (
-                          <motion.div key={e.id} variants={itemVariants}>
+                          <motion.div key={e.id} variants={itemVariants} style={{ height: '100%' }}>
                             <EventCard event={e} />
                           </motion.div>
                         ))}
@@ -131,7 +131,7 @@ export default function Events() {
                         variants={containerVariants}
                       >
                         {past.map((e) => (
-                          <motion.div key={e.id} variants={itemVariants}>
+                          <motion.div key={e.id} variants={itemVariants} style={{ height: '100%' }}>
                             <EventCard event={e} />
                           </motion.div>
                         ))}

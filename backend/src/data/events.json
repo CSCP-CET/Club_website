@@ -15,7 +15,7 @@
   {
   "id": "cp-ace-session",
   "title": "Ace Competitive Programming Session",
-  "description": "Exclusive competitive programming session by Aravind Suresh Thakidayil (Software Developer at Oracle). Sharpen your coding skills and logical thinking. Registration fee ₹19.",
+  "description": "Exclusive competitive programming session by Aravind Suresh Thakidayil (Software Developer at Oracle).",
   "dateISO": "2026-02-09",
   "kind": "past",
   "links": [
@@ -24,5 +24,26 @@
       "url": "https://forms.gle/3FCRDntbDy3S9UTL6"
     }
   ]
+},
+{
+  "id": "intro-to-ctf",
+  "title": "Introduction To Capture The Flag",
+  "description": "Introduction to CTF and Linux. Resource Person: Sooraj Mathew.",
+  "dateISO": "2025-09-19",
+  "kind": "past"
+},
+{
+  "id": "cracking-the-code",
+  "title": "Cracking The Code",
+  "description": "Intro to Competitive Programming. Resource Person: Krishnachandran U.",
+  "dateISO": "2025-08-25",
+  "kind": "past"
+},
+{
+  "id": "into-the-airways",
+  "title": "Into The Airways",
+  "description": "Wireless penetration testing and penetration tools. Resource Person: Offenso Academy.",
+  "dateISO": "2025-08-12",
+  "kind": "past"
 }
 ]

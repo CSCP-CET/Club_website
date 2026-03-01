@@ -6,6 +6,24 @@
     "dateISO": "2025-08-01"
   },
   {
+    "id": "into-the-airways",
+    "title": "Into The Airways",
+    "description": "Wireless penetration testing and penetration tools by Offenso Academy.",
+    "dateISO": "2025-08-12"
+  },
+  {
+    "id": "cracking-the-code",
+    "title": "Cracking The Code",
+    "description": "Intro to Competitive Programming by Krishnachandran U.",
+    "dateISO": "2025-08-25"
+  },
+  {
+    "id": "intro-to-ctf",
+    "title": "Introduction To Capture The Flag",
+    "description": "Introduction to CTF and Linux by Sooraj Mathew.",
+    "dateISO": "2025-09-19"
+  },
+  {
     "id": "first-ctf",
     "title": "First CTF Practice",
     "description": "Hands-on intro to web + crypto + reversing basics.",
