@@ -20,7 +20,7 @@ export default function Navbar() {
           <div className={styles.mark} aria-hidden="true" style={{ background: 'transparent', border: 'none' }}>
             <img src={logo} alt="CSCP Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
-          <span className={styles.name}>CYBER SECURITY AND COMPETITIVE PROGRAMMING CLUB</span>
+          <span className={styles.name}>CSCP</span>
         </div>
 
         <button

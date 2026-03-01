@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import SpotlightCard from '../components/SpotlightCard';
+import logo from '../assets/CSCP_LOGO.png';
 
 import FloatingBlobs from '../components/FloatingBlobs';
 
@@ -132,6 +133,10 @@ export default function Home() {
         <ParticleField />
         <div className="hero-radial-glow-1" aria-hidden="true" />
         <div className="hero-radial-glow-2" aria-hidden="true" />
+        
+        <div className="hero-bg-logo-container" aria-hidden="true">
+          <img src={logo} alt="CSCP Logo Background" className="hero-bg-logo" />
+        </div>
 
         <div className="hero-content">
           <div className={`hero-badge ${loaded ? 'visible' : ''}`}>
