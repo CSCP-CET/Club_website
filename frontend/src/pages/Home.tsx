@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
-import SpotlightCard from '../components/SpotlightCard';
 import logo from '../assets/CSCP_LOGO.png';
 
 import FloatingBlobs from '../components/FloatingBlobs';
@@ -177,33 +176,33 @@ export default function Home() {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants} style={{ height: '100%' }}>
-          <SpotlightCard style={{ height: '100%' }} className="card" spotlightColor="rgba(168, 85, 247, 0.25)">
+          <div style={{ height: '100%' }} className="card">
             <div style={{ padding: '28px', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <div className="muted" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', fontFamily: '"Orbitron", sans-serif', color: 'var(--accent)' }}>Focus</div>
               <div style={{ marginTop: 14, fontSize: '1.35rem', fontWeight: 600, fontFamily: '"Russo One", sans-serif', letterSpacing: '1px' }}>Offensive & Defensive Security</div>
               <p className="muted" style={{ marginTop: '18px', fontSize: '1rem', flexGrow: 1, lineHeight: 1.6 }}>Master real-world pentesting, cryptography, and secure architecture.</p>
             </div>
-          </SpotlightCard>
+          </div>
         </motion.div>
 
         <motion.div variants={itemVariants} style={{ height: '100%' }}>
-          <SpotlightCard style={{ height: '100%' }} className="card" spotlightColor="rgba(56, 189, 248, 0.25)">
+          <div style={{ height: '100%' }} className="card">
             <div style={{ padding: '28px', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <div className="muted" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', fontFamily: '"Orbitron", sans-serif', color: 'var(--accent-2)' }}>Practice</div>
               <div style={{ marginTop: 14, fontSize: '1.35rem', fontWeight: 600, fontFamily: '"Russo One", sans-serif', letterSpacing: '1px' }}>CP + DSA + Contests</div>
               <p className="muted" style={{ marginTop: '18px', fontSize: '1rem', flexGrow: 1, lineHeight: 1.6 }}>Sharpen algorithms and data structures to dominate competitive programming.</p>
             </div>
-          </SpotlightCard>
+          </div>
         </motion.div>
 
         <motion.div variants={itemVariants} style={{ height: '100%' }}>
-          <SpotlightCard style={{ height: '100%' }} className="card" spotlightColor="rgba(251, 113, 133, 0.25)">
+          <div style={{ height: '100%' }} className="card">
             <div style={{ padding: '28px', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <div className="muted" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', fontFamily: '"Orbitron", sans-serif', color: 'var(--accent-3)' }}>Community</div>
               <div style={{ marginTop: 14, fontSize: '1.35rem', fontWeight: 600, fontFamily: '"Russo One", sans-serif', letterSpacing: '1px' }}>Mentorship + Teamwork</div>
               <p className="muted" style={{ marginTop: '18px', fontSize: '1rem', flexGrow: 1, lineHeight: 1.6 }}>Grow with peers through collaborative hackathons and expert guidance.</p>
             </div>
-          </SpotlightCard>
+          </div>
         </motion.div>
       </motion.section>
     </div>

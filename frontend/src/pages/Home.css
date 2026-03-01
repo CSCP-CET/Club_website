@@ -18,12 +18,18 @@
 
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   margin-top: -10px; /* Offset the container padding if any */
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: 70vh;
+  }
 }
 
 .hero-radial-glow-1 {
@@ -50,15 +56,30 @@
   justify-content: center;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.15;
+  opacity: 0.1;
+}
+
+@media (min-width: 768px) {
+  .hero-bg-logo-container {
+    opacity: 0.15;
+  }
 }
 
 .hero-bg-logo {
   width: 90vmin;
   height: 90vmin;
   object-fit: contain;
-  opacity: 0.8;
+  opacity: 0.9;
   filter: grayscale(80%) blur(2px);
+}
+
+@media (min-width: 768px) {
+  .hero-bg-logo {
+    width: 90vmin;
+    height: 90vmin;
+    opacity: 0.8;
+    filter: grayscale(80%) blur(2px);
+  }
 }
 
 .hero-content {
