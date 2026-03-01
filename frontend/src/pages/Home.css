@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 5px; /* Offset the container padding if any */
+  margin-top: -10px; /* Offset the container padding if any */
 }
 
 .hero-radial-glow-1 {
@@ -73,7 +73,7 @@
 
 @media (min-width: 768px) {
   .hero-content {
-    padding-top: 160px;
+    padding-top: 80px;
   }
 }
 

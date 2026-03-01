@@ -125,7 +125,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container" style={{ position: 'relative', minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <div className="container">
       {/* Floating blobs behind the main section */}
       <FloatingBlobs />
 
@@ -170,7 +170,7 @@ export default function Home() {
 
       {/* Grid of Section Focus Cards styled with neon spotlight effects */}
       <motion.section 
-        style={{ marginTop: 40, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
