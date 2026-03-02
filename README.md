@@ -84,14 +84,15 @@ cscp-cet/
 ```
 
 ## Setup Instructions
+1. **Configure .env file: Refer to .env.example**
 
-1. **Install dependencies:**
+2. **Install dependencies:**
 
    ```bash
    pnpm install
    ```
 
-2. **Start development servers:**
+3. **Start development servers:**
 
    ```bash
    pnpm dev
@@ -99,7 +100,7 @@ cscp-cet/
 
    This starts both frontend (http://localhost:5173) and backend (http://localhost:3000).
 
-3. **Build for production:**
+4. **Build for production:**
    ```bash
    pnpm build
    ```
